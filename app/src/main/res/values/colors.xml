@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#bb50f6</color>
+    <color name="colorPrimaryDark">#bd6af0</color>
+    <color name="colorAccent">#bd6af0</color>
+    <color name="colorToDo">#ffb130</color>
+    <color name="colorToDoSecond">#ba8122</color>
+    <color name="colorTips">#3ec197</color>
+    <color name="colorTipsSecond">#2F9373</color>
+    <color name="white">#83ffffff</color>
+    <color name="white_clear">#ffffff</color>
+
+
+</resources>
