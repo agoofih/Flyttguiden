@@ -50,17 +50,17 @@ public class FlyttActivity extends AppCompatActivity {
     long date;
     long moveLong;
 
-    double oneWeekSec = 604800.0; // sekunder
-    double twoWeekSex = 1209600.0; // sekunder
-    double oneMonthSec = 2629744.0; // sekunder
-    double twoMonthSec = 5259488.0; // sekunder
-    double threeMonthSec = 7802791.0; // sekunder
+    long oneWeekS = 604800; // sekunder
+    long twoWeekS = 1209600; // sekunder
+    long oneMonthS = 2592000; // sekunder
+    long twoMonthS = 5184000; // sekunder
+    long threeMonthS = 7776000; // sekunder
 
-    double notificationOneWeek;
-    double notificationTwoWeek;
-    double notificationOneMonth;
-    double notificationTwoMonth;
-    double notificationThreeMonth;
+    long notificationOneWeek;
+    long notificationTwoWeek;
+    long notificationOneMonth;
+    long notificationTwoMonth;
+    long notificationThreeMonth;
 
 
     String poop;
@@ -84,6 +84,7 @@ public class FlyttActivity extends AppCompatActivity {
 
 
         millis = System.currentTimeMillis();
+        Log.d(TAG, "TIDEN NU: MILLIS: " + millis);
 
         //notificationFactory = new NotificationFactory(this );
 
@@ -98,14 +99,23 @@ public class FlyttActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: awdawdwad");
 
+
+
+                /*Log.d(TAG, "moveLong - oneWeekMS = BOKA EN VECKA INNAN FLYTT  = " + (notificationOneWeek)); // notificationOneWeek
+                Log.d(TAG, "moveLong - twoWeekS = BOKA TVÅ VECKOR INNAN FLYTT  = " + (notificationTwoWeek)); // notificationTwoWeek
+                Log.d(TAG, "moveLong - oneMonthS = BOKA EN MÅNAD INNAN FLYTT  = " + (notificationOneMonth)); // notificationOneMonth
+                Log.d(TAG, "moveLong - twoMonthS = BOKA TVÅ MÅNADER INNAN FLYTT  = " + (notificationTwoMonth)); // notificationTwoMonth
+                Log.d(TAG, "moveLong - threeMonthS = BOKA TRE MÅNADER INNAN FLYTT  = " + (notificationThreeMonth)); // notificationThreeMonth*/
+
                 final List<NotificationSHIT> list = new ArrayList<>();
 
                 final Calendar calendar = Calendar.getInstance();
 
+
+
                 list.add(new NotificationSHIT(1, "HEJ", "HEJARE", 1000 * 5));
 
                 list.add(new NotificationSHIT(2, "HEJ2", "HEJARE2", 1000 * 10));
-
 
                 int index = 0;
 
@@ -157,16 +167,25 @@ public class FlyttActivity extends AppCompatActivity {
                         calle.set(i,moveBefore,i2); // tiden tills flytt
 
                         date = calle.getTime().getTime();
-                        moveLong = date - millis;
-                        Log.d(TAG, "onDateSet: MOVELONG" + moveLong);
+                        moveLong = (date - millis) / 1000;
+                        Log.d(TAG, "onDateSet: MOVELONG: " + moveLong);
                         if (moveLong < 0){
                             Toast.makeText(FlyttActivity.this, getString(R.string.guiden_toast_wrong_date), Toast.LENGTH_SHORT).show();
                         }else{
                             mDateShowDate.setText(i + "-" + i1 + "-" + i2);
                         }
 
+                        notificationOneWeek = moveLong - oneWeekS;
+                        notificationTwoWeek = moveLong - twoWeekS;
+                        notificationOneMonth = moveLong - oneMonthS;
+                        notificationTwoMonth = moveLong - twoMonthS;
+                        notificationThreeMonth = moveLong - threeMonthS;
 
-
+                        /*Log.d(TAG, "moveLong - oneWeekMS = BOKA EN VECKA INNAN FLYTT  = " + (notificationOneWeek)); // notificationOneWeek
+                        Log.d(TAG, "moveLong - twoWeekS = BOKA TVÅ VECKOR INNAN FLYTT  = " + (notificationTwoWeek)); // notificationTwoWeek
+                        Log.d(TAG, "moveLong - oneMonthS = BOKA EN MÅNAD INNAN FLYTT  = " + (notificationOneMonth)); // notificationOneMonth
+                        Log.d(TAG, "moveLong - twoMonthS = BOKA TVÅ MÅNADER INNAN FLYTT  = " + (notificationTwoMonth)); // notificationTwoMonth
+                        Log.d(TAG, "moveLong - threeMonthS = BOKA TRE MÅNADER INNAN FLYTT  = " + (notificationThreeMonth)); // notificationThreeMonth*/
                     }
                 }, y, m, d);
                 pickerDialog.show();
