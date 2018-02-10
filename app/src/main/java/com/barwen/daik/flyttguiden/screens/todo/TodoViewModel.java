@@ -3,19 +3,11 @@ package com.barwen.daik.flyttguiden.screens.todo;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.arch.persistence.room.Room;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.barwen.daik.flyttguiden.RepositoryFactory;
-import com.barwen.daik.flyttguiden.TodoEntryRepository;
+import com.barwen.daik.flyttguiden.universal.RepositoryFactory;
+import com.barwen.daik.flyttguiden.universal.TodoEntryRepository;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,7 +22,7 @@ public class TodoViewModel extends AndroidViewModel {
     public TodoViewModel(@NonNull Application application) {
         super(application);
 
-        todoEntryRepository = RepositoryFactory.getsTodoEntryRepository(application);
+        todoEntryRepository = RepositoryFactory.getTodoEntryRepository(application);
 
     }
 

@@ -1,4 +1,4 @@
-package com.barwen.daik.flyttguiden;
+package com.barwen.daik.flyttguiden.universal;
 
 import android.arch.lifecycle.LiveData;
 import android.content.Context;

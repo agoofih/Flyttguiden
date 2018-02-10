@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.barwen.daik.flyttguiden">
 
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -23,6 +25,8 @@
         <activity android:name=".screens.tips.TipsActivity" />
         <activity android:name=".screens.flytt.FlyttActivity" />
         <activity android:name=".screens.info.InfoActivity"></activity>
+        <activity android:name=".screens.flytt.NotificationReceiverActivity"></activity>
+        <receiver android:name=".screens.flytt.AlarmReceiver"/>
     </application>
 
 </manifest>
