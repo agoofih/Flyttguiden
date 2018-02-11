@@ -242,6 +242,9 @@ public class FlyttActivity extends AppCompatActivity {
 
                         index++;
 
+                        long notiTime = notificationSHIT.getTime();
+                        long notiTimeTotal = notiTime * 1000;
+
                         Intent alarmIntent = new Intent(getApplicationContext(), AlarmReceiver.class);
                         alarmIntent.putExtra("id", notificationSHIT.getId());
                         alarmIntent.putExtra("title", notificationSHIT.getTitle());
@@ -252,11 +255,12 @@ public class FlyttActivity extends AppCompatActivity {
                         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                         alarmManager.set(
                                 AlarmManager.RTC_WAKEUP,
-                                calendar.getTimeInMillis() + notificationSHIT.getTime(),
+                                calendar.getTimeInMillis() + notiTimeTotal,
                                 pendingIntent
                         );
 
-                        Log.d(TAG, "INTENT = " + alarmIntent);
+                       // Log.d(TAG, "notificationShit calendar: " + calendar.getTimeInMillis() + " get time " + notiTimeTotal);
+
                     }
 
 

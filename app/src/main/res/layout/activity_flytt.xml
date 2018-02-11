@@ -80,7 +80,7 @@
         android:background="@drawable/rounded_choose"
         android:text="@string/cancel_button"
         android:textColor="@color/white_clear"
-        android:textSize="14sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="@+id/textView17"
         app:layout_constraintStart_toStartOf="@+id/textView17"
