@@ -25,7 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
         notificationHelper.notify(id,title, longText);
-        Log.d(TAG, "onReceive: ALARM MOTTAGET ");
+        Log.d(TAG, "onReceive: ALARM MOTTAGET " + id);
 
     }
 }
