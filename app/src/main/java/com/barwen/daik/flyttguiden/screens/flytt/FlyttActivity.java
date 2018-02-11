@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class FlyttActivity extends AppCompatActivity {
     TextView helpTextTop;
     TextView helpTextBottom;
     TextView resetHelpText;
+    TextView activeDateShow;
 
     private NotificationHelper notificationHelper;
 
@@ -94,15 +96,11 @@ public class FlyttActivity extends AppCompatActivity {
         final SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
-
         //editor.putString("Name","Harneet");
         //editor.apply();
 
         //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         //String name = preferences.getString("Name", "");
-
-        resetHelpText = findViewById(R.id.textView52);
-        resetHelpText.setVisibility(View.INVISIBLE);
 
 
         mDatePickerButton = findViewById(R.id.date_picker_button);
@@ -112,17 +110,23 @@ public class FlyttActivity extends AppCompatActivity {
         helpTextTop = findViewById(R.id.textView17);
         helpTextBottom = findViewById(R.id.textView18);
 
+        activeDateShow = findViewById(R.id.date_show_active);
+        activeDateShow.setVisibility(View.INVISIBLE);
+        resetHelpText = findViewById(R.id.textView52);
+        resetHelpText.setVisibility(View.INVISIBLE);
+
         isActive = sharedPreferences.getBoolean("Active", false);
 
-        if (isActive == true){
+        if (isActive == true) {
             mHelpButton.setVisibility(View.INVISIBLE);
             mDatePickerButton.setVisibility(View.INVISIBLE);
             helpTextTop.setText("");
             helpTextBottom.setText("");
             resetHelpText.setVisibility(View.VISIBLE);
             helpClicked = true;
-            mDateShowDate.setText(sharedPreferences.getString("ChoosenDate", ""));
-        }else{
+            activeDateShow.setVisibility(View.VISIBLE);
+            activeDateShow.setText(sharedPreferences.getString("ChoosenDate", ""));
+        } else {
 
         }
 
@@ -142,7 +146,7 @@ public class FlyttActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(timeChosen == true){
+                if (timeChosen == true) {
 
                     final List<NotificationSHIT> list = new ArrayList<>();
 
@@ -236,7 +240,7 @@ public class FlyttActivity extends AppCompatActivity {
 
                 list.add(new NotificationSHIT(2, "HEJ2", "HEJARE2", 1000 * 10));*/
 
-                        index = 0;
+                    index = 0;
 
                     for (NotificationSHIT notificationSHIT : list) {
 
@@ -250,7 +254,7 @@ public class FlyttActivity extends AppCompatActivity {
                         alarmIntent.putExtra("title", notificationSHIT.getTitle());
                         alarmIntent.putExtra("longText", notificationSHIT.getLongText());
 
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(v.getContext(),1 , alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(v.getContext(), 1, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                         alarmManager.set(
@@ -259,7 +263,7 @@ public class FlyttActivity extends AppCompatActivity {
                                 pendingIntent
                         );
 
-                       // Log.d(TAG, "notificationShit calendar: " + calendar.getTimeInMillis() + " get time " + notiTimeTotal);
+                        // Log.d(TAG, "notificationShit calendar: " + calendar.getTimeInMillis() + " get time " + notiTimeTotal);
 
                     }
 
@@ -271,11 +275,22 @@ public class FlyttActivity extends AppCompatActivity {
                     resetHelpText.setVisibility(View.VISIBLE);
                     helpClicked = true;
 
+                    //activeDateShow.setVisibility(View.VISIBLE);
+                    AlphaAnimation animation1 = new AlphaAnimation(0.0f, 1.0f);
+                    animation1.setDuration(800);
+                    animation1.setStartOffset(1);
+                    animation1.setFillAfter(true);
+                    activeDateShow.startAnimation(animation1);
+
+                    activeDateShow.setText(mDateShowDate.getText().toString());
+
                     editor.putBoolean("Active", true);
                     editor.putString("ChoosenDate", mDateShowDate.getText().toString());
                     editor.apply();
 
-                }else{
+                    mDateShowDate.setText("");
+
+                } else {
                     Toast.makeText(FlyttActivity.this, R.string.timeChoose,
                             Toast.LENGTH_LONG).show();
                 }
@@ -297,6 +312,7 @@ public class FlyttActivity extends AppCompatActivity {
                     helpClicked = false;
                     timeChosen = false;
                     mDateShowDate.setText("");
+                    activeDateShow.setText("");
                     resetHelpText.setVisibility(View.INVISIBLE);
                     editor.putBoolean("Active", false);
                     editor.apply();
@@ -309,7 +325,7 @@ public class FlyttActivity extends AppCompatActivity {
 
                     alarmManager.cancel(pendingIntent);
 
-                }else{
+                } else {
 
                 }
             }
@@ -342,6 +358,7 @@ public class FlyttActivity extends AppCompatActivity {
                         //Log.d(TAG, "onDateSet: MOVELONG: " + moveLong);
                         if (moveLong < 0) {
                             Toast.makeText(FlyttActivity.this, getString(R.string.guiden_toast_wrong_date), Toast.LENGTH_SHORT).show();
+                            return;
                         } else {
                             mDateShowDate.setText(i + "-" + i1 + "-" + i2);
                         }
@@ -395,32 +412,6 @@ public class FlyttActivity extends AppCompatActivity {
             }
         }
     }
-
-   /* private void sendNotification(int id, Notification.Builder notification) {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        if (notificationManager != null) {
-            notificationManager.notify(id, notification.build());
-        }
-    }
-
-    private Notification.Builder showExpandableNotification() {
-        // Implement a expandable notification
-        String longText = "As he crossed toward the pharmacy at the corner he involuntarily turned his head because of a burst of light that had ricocheted from his temple, and saw, with that quick smile with which we greet a rainbow or a rose, a blindingly white parallelogram of sky being unloaded from the van—a dresser with mirrors across which, as across a cinema screen, passed a flawlessly clear reflection of boughs sliding and swaying not arboreally, but with a human vacillation, produced by the nature of those who were carrying this sky, these boughs, this gliding façade.";
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            return new Notification.Builder(this, "CHANNEL_TWO_ID")
-                    .setSmallIcon(R.drawable.ic_stat_notificon)
-                    .setContentTitle("Wow! I got a title!")
-                    .setContentText("Subject")
-                    .setStyle(new Notification.BigTextStyle().bigText(longText));
-        } else {
-            return new Notification.Builder(this)
-                    .setSmallIcon(R.drawable.ic_stat_notificon)
-                    .setContentTitle("Wow! I got a title!")
-                    .setContentText("Subject")
-                    .setStyle(new Notification.BigTextStyle().bigText(longText));
-        }
-    }*/
 
 
 }

@@ -43,10 +43,10 @@
     <string name="info_h10">Denna delen kanske är den som behöver mest förklarande. Här använder du datepickern (snurrhjulet) och väljer vilket datum det är du ska flytta, denna kommer då att spara detta i appen och skicka notiser till dig med hjälpfulla tips vid bra tillfällen för att underlätta din flytt och se till att du inte glömmer något viktigt.</string>
     <string name="info_h11">Tack åter igen och ni kan nå mig för support på facebook via länken:</string>
     <string name="info_h12">https://www.facebook.com/Flytta-1608902132504805/</string>
-    <string name="popupH1">Ny ToDo</string>
+    <string name="popupH1">What To-Do?</string>
     <string name="popup_plainTextHint">Sak att komma ihåg</string>
     <string name="guiden_h1">Välkommen till flytthjälpen</string>
-    <string name="guiden_h2">Här får du hjälp med just din flytt i form av notiser du kommer få under tiden desu närmare flytten kommer.</string>
+    <string name="guiden_h2">Här får du hjälp med just din flytt i form av notiser du kommer få under tiden destu närmare flytten kommer.</string>
     <string name="guiden_h2_2">Välj vilket datum du ska flytta genom att klicka på knappen ovan, tryck sedan på knappen \"HELP\" nedan så är du igång!</string>
     <string name="guiden_h3">Klicka på knappen nedan för att välja ditt flyttdatum</string>
     <string name="guiden_date_shower">Du ska flytta</string>
@@ -54,5 +54,12 @@
     <string name="cancel_button">Starta om</string>
     <string name="timeChoose">Du måste välja ett datum ovan</string>
     <string name="guiden_h2_booked">Nu är notiserna bokade, lycka till med flytten! \nVill du starta om, stänga av eller sätta ett annat datum, klicka på knappen "Starta om" ovan</string>
+    <string name="choose_button">Välj</string>
+    <string name="move_main_button">Flytthjälpen</string>
+    <string name="todo_main_button">To-Do listan</string>
+    <string name="tips_main_button">Tips och Trix</string>
+    <string name="notification_recived">Notis mottagen</string>
+    <string name="button_x">X</string>
+    <string name="add_button">+</string>
 
 </resources>
