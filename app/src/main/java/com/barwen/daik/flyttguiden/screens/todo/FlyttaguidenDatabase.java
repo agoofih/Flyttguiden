@@ -9,7 +9,7 @@ import android.content.Context;
  * Created by daik on 2018-01-09.
  */
 
-@Database(entities = {TodoEntry.class}, version = 1,exportSchema = false)
+@Database(entities = {TodoEntry.class}, version = 1, exportSchema = false)
 public abstract class FlyttaguidenDatabase extends RoomDatabase {
 
     private static FlyttaguidenDatabase sInstance;

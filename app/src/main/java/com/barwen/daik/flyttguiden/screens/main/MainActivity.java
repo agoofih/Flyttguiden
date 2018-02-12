@@ -19,12 +19,10 @@ import com.barwen.daik.flyttguiden.screens.todo.TodoActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private Button flyttBtn;
     private Button todoBtn;
     private Button tipsBtn;
     private FloatingActionButton infoBtn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.rgb(178,115,233));
-            window.setNavigationBarColor(Color.rgb(99,190,154));
+            window.setStatusBarColor(Color.rgb(178, 115, 233));
+            window.setNavigationBarColor(Color.rgb(99, 190, 154));
         }
 
         flyttBtn = findViewById(R.id.flytt_button);
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        infoBtn.setOnClickListener(new View.OnClickListener(){
+        infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(getBaseContext(), InfoActivity.class);

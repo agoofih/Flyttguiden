@@ -20,8 +20,6 @@ import java.util.List;
 
 public class TodoViewHolder extends RecyclerView.ViewHolder {
 
-    private static final String TAG = "NR: ";
-
     private TodoEntry todoEntry;
 
     private TextView todoName;

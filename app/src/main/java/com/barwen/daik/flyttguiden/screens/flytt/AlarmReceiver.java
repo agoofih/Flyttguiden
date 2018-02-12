@@ -10,10 +10,10 @@ import android.util.Log;
  */
 
 public class AlarmReceiver extends BroadcastReceiver {
+    private static final String TAG = "AlarmReceiver";
 
     private NotificationHelper notificationHelper;
 
-    private static final String TAG = "AlarmReceiver";
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -23,9 +23,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         String longText = intent.getStringExtra("longText");
         int id = intent.getIntExtra("id", -1);
 
-
         notificationHelper.notify(id,title, longText);
-        Log.d(TAG, "onReceive: ALARM MOTTAGET " + id);
-
+        Log.d(TAG, "onReceive: ALARM MOTAGET! " + id);
     }
 }

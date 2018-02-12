@@ -28,7 +28,6 @@ import java.util.List;
 
 public class TodoActivity extends AppCompatActivity {
 
-    private static final String TAG = "TodoActivity";
     private TodoViewModel viewModel;
     private EditText mAddItem;
 
@@ -41,8 +40,8 @@ public class TodoActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.rgb(246,179,78));
-            window.setNavigationBarColor(Color.rgb(246,179,78));
+            window.setStatusBarColor(Color.rgb(246, 179, 78));
+            window.setNavigationBarColor(Color.rgb(246, 179, 78));
         }
 
         viewModel = ViewModelProviders.of(this).get(TodoViewModel.class);
@@ -70,10 +69,10 @@ public class TodoActivity extends AppCompatActivity {
         });
 
         FloatingActionButton create = findViewById(R.id.create);
-        create.setOnClickListener(new View.OnClickListener(){
+        create.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(final View v){
+            public void onClick(final View v) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(TodoActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_todo, null);
 
@@ -86,14 +85,14 @@ public class TodoActivity extends AppCompatActivity {
                 final AlertDialog dialog = mBuilder.create();
                 dialog.show();
 
-                closeButton.setOnClickListener(new View.OnClickListener(){
+                closeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.cancel();
                     }
                 });
 
-                addButton.setOnClickListener(new View.OnClickListener(){
+                addButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (!mAddItem.getText().toString().isEmpty()) {
@@ -107,7 +106,7 @@ public class TodoActivity extends AppCompatActivity {
                             viewModel.save(entry);
                             dialog.cancel();
 
-                        }else{
+                        } else {
                             Toast.makeText(TodoActivity.this,
                                     "Nada?",
                                     Toast.LENGTH_LONG).show();
@@ -119,7 +118,6 @@ public class TodoActivity extends AppCompatActivity {
 
 
             }
-
 
 
         });

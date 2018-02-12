@@ -45,9 +45,6 @@ public class FlyttActivity extends AppCompatActivity {
     private NotificationHelper notificationHelper;
 
 
-    private static final int notification_one = 101;
-    private static final int notification_two = 102;
-
     int d;
     int m;
     int y;
@@ -70,11 +67,19 @@ public class FlyttActivity extends AppCompatActivity {
     long notificationTwoMonth;
     long notificationThreeMonth;
 
-    long setNow1 = 600000;
-    long setNow2 = 610000;
-    long setNow3 = 620000;
-    long setNow4 = 630000;
-    long setNow5 = 640000;
+    long setNow1 = 1;
+    long setNow2 = 2;
+    long setNow3 = 3;
+    long setNow4 = 4;
+    long setNow5 = 5;
+
+    long setNow1000 = 10;
+    long setNow2000 = 20;
+    long setNow3000 = 30;
+    long setNow4000 = 40;
+    long setNow5000 = 50;
+    long setNow6000 = 60;
+    long setNow7000 = 70;
 
     boolean timeChosen;
     boolean helpClicked;
@@ -94,14 +99,6 @@ public class FlyttActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(this.getPackageName(), Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-
-
-        //editor.putString("Name","Harneet");
-        //editor.apply();
-
-        //SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //String name = preferences.getString("Name", "");
-
 
         mDatePickerButton = findViewById(R.id.date_picker_button);
         mHelpButton = findViewById(R.id.help_button);
@@ -132,11 +129,8 @@ public class FlyttActivity extends AppCompatActivity {
 
 
         millis = System.currentTimeMillis();
-        //Log.d(TAG, "TIDEN NU: MILLIS: " + millis);
 
-        //notificationFactory = new NotificationFactory(this );
-
-        createChannels();
+        //createChannels();
 
 
         notificationHelper = new NotificationHelper(this);
@@ -154,12 +148,12 @@ public class FlyttActivity extends AppCompatActivity {
 
                     if (notificationOneWeek <= 0) {
                         Log.d(TAG, " -- TIDEN, En vecka innan skickas direkt");
-                        list.add(new NotificationSHIT(1, "Frosta av kyl och frys", "Även då du kanske har beställt flyttstädning måste grunderna vara fixade, avfrostning är ett måste!", setNow1 + 1));
-                        list.add(new NotificationSHIT(2, "Stäng av Spisen och stäng alla fönstren", "Se til att alla elsaker är avstängda och bostaden är stängd och låst", setNow1 + 1000));
-                        list.add(new NotificationSHIT(3, "Läs av eventuella el och vattenmätare", "Om du har så är det bra att läsa av alla mätare för att veta när du slutade använda sakerna.", setNow1 + 2000));
-                        list.add(new NotificationSHIT(4, "Packa ihop saker som hör till lägenheten på ett ställe", "t.ex. bredbandsutrustningen om din bostad har det inkluderat", setNow1 + 3000));
-                        list.add(new NotificationSHIT(5, "Handla allt du kan behöva inför flytten", "Har du ”flytthandskar” och liknande saker som gör att flytten sliter på dig så lite som möjligt?", setNow1 + 4000));
-                        list.add(new NotificationSHIT(6, "Packa de sista sakerna du klarar dig utan", "Packa allt utom de dagliga sakerna, ta fram kläder du kommer använda och packa resten!", setNow1 + 5000));
+                        list.add(new NotificationSHIT(1, "Frosta av kyl och frys", "Även då du kanske har beställt flyttstädning måste grunderna vara fixade, avfrostning är ett måste!", setNow1 + setNow1000));
+                        list.add(new NotificationSHIT(2, "Stäng av Spisen och stäng alla fönstren", "Se til att alla elsaker är avstängda och bostaden är stängd och låst", setNow1 + setNow2000));
+                        list.add(new NotificationSHIT(3, "Läs av eventuella el och vattenmätare", "Om du har så är det bra att läsa av alla mätare för att veta när du slutade använda sakerna.", setNow1 + setNow3000));
+                        list.add(new NotificationSHIT(4, "Packa ihop saker som hör till lägenheten på ett ställe", "t.ex. bredbandsutrustningen om din bostad har det inkluderat", setNow1 + setNow4000));
+                        list.add(new NotificationSHIT(5, "Handla allt du kan behöva inför flytten", "Har du ”flytthandskar” och liknande saker som gör att flytten sliter på dig så lite som möjligt?", setNow1 + setNow5000));
+                        list.add(new NotificationSHIT(6, "Packa de sista sakerna du klarar dig utan", "Packa allt utom de dagliga sakerna, ta fram kläder du kommer använda och packa resten!", setNow1 + setNow6000));
                     } else {
                         Log.d(TAG, " -- BOKAD EN VECKA");
                         list.add(new NotificationSHIT(1, "Frosta av kyl och frys", "Även då du kanske har beställt flyttstädning måste grunderna vara fixade, avfrostning är ett måste!", notificationOneWeek + 1));
@@ -171,9 +165,9 @@ public class FlyttActivity extends AppCompatActivity {
                     }
                     if (notificationTwoWeek <= 0) {
                         Log.d(TAG, " -- TIDEN, Två veckor innan skickas direkt");
-                        list.add(new NotificationSHIT(7, "Har du meddelat eventuellt jobb om din nya adress?", "Alltid bra ditt jobb vet vart dina lönespecs ska skickas!", setNow2 + 1));
-                        list.add(new NotificationSHIT(8, "Dubbelkolla alla avbeställningar och beställningar", "Se till att all information är fixad och allt är beställd och avbeställt. En extra koll skadar inte!", setNow2 + 1000));
-                        list.add(new NotificationSHIT(9, "Påminn kompisar om flytthjälp!", "I vanlig ordning glöms saker bort, påminn din flyttcrew att det är bara två veckor kvar!", setNow2 + 2000));
+                        list.add(new NotificationSHIT(7, "Har du meddelat eventuellt jobb om din nya adress?", "Alltid bra ditt jobb vet vart dina lönespecs ska skickas!", setNow2 + setNow1000));
+                        list.add(new NotificationSHIT(8, "Dubbelkolla alla avbeställningar och beställningar", "Se till att all information är fixad och allt är beställd och avbeställt. En extra koll skadar inte!", setNow2 + setNow2000));
+                        list.add(new NotificationSHIT(9, "Påminn kompisar om flytthjälp!", "I vanlig ordning glöms saker bort, påminn din flyttcrew att det är bara två veckor kvar!", setNow2 + setNow3000));
                     } else {
                         Log.d(TAG, " -- BOKAD TVÅ VECKOR");
                         list.add(new NotificationSHIT(7, "Har du meddelat eventuellt jobb om din nya adress?", "Alltid bra ditt jobb vet vart dina lönespecs ska skickas!", notificationTwoWeek + 1));
@@ -183,13 +177,13 @@ public class FlyttActivity extends AppCompatActivity {
                     }
                     if (notificationOneMonth <= 0) {
                         Log.d(TAG, " -- TIDEN, En månad innan skickas direkt");
-                        list.add(new NotificationSHIT(10, "Fixa gamla bostaden till skicket du fick den i!", "Om du inte redan gjort det så återställ allt i tid, måla, spackla, häng tillbaka dörrar. Detta behöver besiktigas oftast.", setNow3 + 1));
-                        list.add(new NotificationSHIT(11, "Börja packa dina saker", "Alla behöver olika lång tid men vänta inte med att börja packa dina saker!", setNow3 + 1000));
-                        list.add(new NotificationSHIT(12, "Släng saker du inte använt på en säsong!", "Om du inte använt din tröja alls föregående vinter t.ex. då behöver du inte den!", setNow3 + 2000));
-                        list.add(new NotificationSHIT(13, "Beställ adressändring", "Se till att vara i tid för din adressändring så du inte missar någon viktig post, skaffa gärna eftersändning!", setNow3 + 3000));
-                        list.add(new NotificationSHIT(14, "Prata med din gamla hyresvärd", "Gå igenom med värden om besiktning m.m. så du har datum att följa framöver.", setNow3 + 4000));
-                        list.add(new NotificationSHIT(15, "Har du alla möbler?", "Har du säkert kollat på hela tiden men se till att du har dina basmöbler när du flyttar, gärna så att de levereras till nya adressen direkt.", setNow3 + 5000));
-                        list.add(new NotificationSHIT(16, "Ät upp all mat i skafferiet och frysen!", "Vill du verkligen släpa med gammal mat? Ta och laga mat på allt du har, billigt och mindre slit, mat är tungt!", setNow3 + 6000));
+                        list.add(new NotificationSHIT(10, "Fixa gamla bostaden till skicket du fick den i!", "Om du inte redan gjort det så återställ allt i tid, måla, spackla, häng tillbaka dörrar. Detta behöver besiktigas oftast.", setNow3 + setNow1000));
+                        list.add(new NotificationSHIT(11, "Börja packa dina saker", "Alla behöver olika lång tid men vänta inte med att börja packa dina saker!", setNow3 + setNow2000));
+                        list.add(new NotificationSHIT(12, "Släng saker du inte använt på en säsong!", "Om du inte använt din tröja alls föregående vinter t.ex. då behöver du inte den!", setNow3 + setNow3000));
+                        list.add(new NotificationSHIT(13, "Beställ adressändring", "Se till att vara i tid för din adressändring så du inte missar någon viktig post, skaffa gärna eftersändning!", setNow3 + setNow4000));
+                        list.add(new NotificationSHIT(14, "Prata med din gamla hyresvärd", "Gå igenom med värden om besiktning m.m. så du har datum att följa framöver.", setNow3 + setNow5000));
+                        list.add(new NotificationSHIT(15, "Har du alla möbler?", "Har du säkert kollat på hela tiden men se till att du har dina basmöbler när du flyttar, gärna så att de levereras till nya adressen direkt.", setNow3 + setNow6000));
+                        list.add(new NotificationSHIT(16, "Ät upp all mat i skafferiet och frysen!", "Vill du verkligen släpa med gammal mat? Ta och laga mat på allt du har, billigt och mindre slit, mat är tungt!", setNow3 + setNow7000));
                     } else {
                         Log.d(TAG, " -- BOKAD EN MÅNAD INNAN");
                         list.add(new NotificationSHIT(10, "Fixa gamla bostaden till skicket du fick den i!", "Om du inte redan gjort det så återställ allt i tid, måla, spackla, häng tillbaka dörrar. Detta behöver besiktigas oftast.", notificationOneMonth + 1));
@@ -202,13 +196,13 @@ public class FlyttActivity extends AppCompatActivity {
                     }
                     if (notificationTwoMonth <= 0) {
                         Log.d(TAG, " -- TIDEN, Två månader innan skickas direkt");
-                        list.add(new NotificationSHIT(17, "Boka flyttfirma eller hyrbil", "Gör detta i tid, flytthjälp eller bara hyra bil behövs göras i god tid så du inte står utan mot slutet!", setNow4 + 1));
-                        list.add(new NotificationSHIT(18, "Skicka inbjudan till flytt-hjälps-fest", "Kompisarna som ska hjälpa behöver veta i tid dina planer, påminn dem gärna senare med ;)", setNow4 + 1000));
-                        list.add(new NotificationSHIT(19, "Köp/Låna flyttkartonger och återställningsmaterial", "Dags att förbereda för packning. Införskaffa även färg och spackel om du behöver återställa något i bostaden,", setNow4 + 2000));
-                        list.add(new NotificationSHIT(20, "Beställ ny El", "Då det faktiskt finns en hel del pengar att spara, kolla upp elavtalen i tid, EKO EL!", setNow4 + 3000));
-                        list.add(new NotificationSHIT(21, "Beställ nytt bredband, TV, telefon", "Se till att kolla möjligheten till olika leverantörer och kolla bästa erbjudande.", setNow4 + 4000));
-                        list.add(new NotificationSHIT(22, "Beställ ny hemförsäkring", "Se till att du kollar upp olika företag för bästa täckande försäkring.", setNow4 + 5000));
-                        list.add(new NotificationSHIT(23, "Beställ övriga saker", "Beställ saker som garage, sopämtning, fjärrvärme och annat du kan behöva.", setNow4 + 6000));
+                        list.add(new NotificationSHIT(17, "Boka flyttfirma eller hyrbil", "Gör detta i tid, flytthjälp eller bara hyra bil behövs göras i god tid så du inte står utan mot slutet!", setNow4 + setNow1000));
+                        list.add(new NotificationSHIT(18, "Skicka inbjudan till flytt-hjälps-fest", "Kompisarna som ska hjälpa behöver veta i tid dina planer, påminn dem gärna senare med ;)", setNow4 + setNow2000));
+                        list.add(new NotificationSHIT(19, "Köp/Låna flyttkartonger och återställningsmaterial", "Dags att förbereda för packning. Införskaffa även färg och spackel om du behöver återställa något i bostaden,", setNow4 + setNow3000));
+                        list.add(new NotificationSHIT(20, "Beställ ny El", "Då det faktiskt finns en hel del pengar att spara, kolla upp elavtalen i tid, EKO EL!", setNow4 + setNow4000));
+                        list.add(new NotificationSHIT(21, "Beställ nytt bredband, TV, telefon", "Se till att kolla möjligheten till olika leverantörer och kolla bästa erbjudande.", setNow4 + setNow5000));
+                        list.add(new NotificationSHIT(22, "Beställ ny hemförsäkring", "Se till att du kollar upp olika företag för bästa täckande försäkring.", setNow4 + setNow6000));
+                        list.add(new NotificationSHIT(23, "Beställ övriga saker", "Beställ saker som garage, sopämtning, fjärrvärme och annat du kan behöva.", setNow4 + setNow7000));
                     } else {
                         Log.d(TAG, " -- BOKAD TVÅ MÅNADER");
                         list.add(new NotificationSHIT(17, "Boka flyttfirma eller hyrbil", "Gör detta i tid, flytthjälp eller bara hyra bil behövs göras i god tid så du inte står utan mot slutet!", notificationTwoMonth + 1));
@@ -221,11 +215,11 @@ public class FlyttActivity extends AppCompatActivity {
                     }
                     if (notificationThreeMonth <= 0) {
                         Log.d(TAG, " -- TIDEN, Tre månader innan skickas direkt");
-                        list.add(new NotificationSHIT(24, "Säg upp bredbandet, TV, Telefon", "Du har alltid en uppsägningstid, det brukar variera mellan 1 - 3 månader, därav viktigt att säga upp detta i tid. Även om du har 1 månad kan du säga upp till ett senare datum.", setNow5 + 1));
-                        list.add(new NotificationSHIT(25, "Säg upp elen", "Uppsägningen brukar vara mellan 1 - 3 månader, tänk på att ha kvar elen om du ska ha flyttstädningen eller så även efter du har flyttat ut!", setNow5 + 1000));
-                        list.add(new NotificationSHIT(26, "Säg upp hemförsäkringen", "Uppsägningstiden brukar vara 1 månad", setNow5 + 2000));
-                        list.add(new NotificationSHIT(27, "Säg upp eventuella andra saker", "Beroende på om du har sakerna så säg upp fjärrvärme, sophämtning, garage + + +", setNow5 + 3000));
-                        list.add(new NotificationSHIT(28, "Börja sälja saker du inte vill ha med dig", "Blocket och Tradera t.ex. är bra verktyg att använda i tid. Bli av med saker!", setNow5 + 4000));
+                        list.add(new NotificationSHIT(24, "Säg upp bredbandet, TV, Telefon", "Du har alltid en uppsägningstid, det brukar variera mellan 1 - 3 månader, därav viktigt att säga upp detta i tid. Även om du har 1 månad kan du säga upp till ett senare datum.", setNow5 + setNow1000));
+                        list.add(new NotificationSHIT(25, "Säg upp elen", "Uppsägningen brukar vara mellan 1 - 3 månader, tänk på att ha kvar elen om du ska ha flyttstädningen eller så även efter du har flyttat ut!", setNow5 + setNow2000));
+                        list.add(new NotificationSHIT(26, "Säg upp hemförsäkringen", "Uppsägningstiden brukar vara 1 månad", setNow5 + setNow3000));
+                        list.add(new NotificationSHIT(27, "Säg upp eventuella andra saker", "Beroende på om du har sakerna så säg upp fjärrvärme, sophämtning, garage + + +", setNow5 + setNow4000));
+                        list.add(new NotificationSHIT(28, "Börja sälja saker du inte vill ha med dig", "Blocket och Tradera t.ex. är bra verktyg att använda i tid. Bli av med saker!", setNow5 + setNow5000));
                     } else {
                         Log.d(TAG, " -- BOKAD TRE MÅNADER");
                         list.add(new NotificationSHIT(24, "Säg upp bredbandet, TV, Telefon", "Du har alltid en uppsägningstid, det brukar variera mellan 1 - 3 månader, därav viktigt att säga upp detta i tid. Även om du har 1 månad kan du säga upp till ett senare datum.", notificationThreeMonth + 1));
@@ -234,11 +228,6 @@ public class FlyttActivity extends AppCompatActivity {
                         list.add(new NotificationSHIT(27, "Säg upp eventuella andra saker", "Beroende på om du har sakerna så säg upp fjärrvärme, sophämtning, garage + + +", notificationThreeMonth + 3000));
                         list.add(new NotificationSHIT(28, "Börja sälja saker du inte vill ha med dig", "Blocket och Tradera t.ex. är bra verktyg att använda i tid. Bli av med saker!", notificationThreeMonth + 4000));
                     }
-
-
-                /*list.add(new NotificationSHIT(3, "HEJ", "HEJARE", 1000 * 5));
-
-                list.add(new NotificationSHIT(2, "HEJ2", "HEJARE2", 1000 * 10));*/
 
                     index = 0;
 
@@ -254,7 +243,11 @@ public class FlyttActivity extends AppCompatActivity {
                         alarmIntent.putExtra("title", notificationSHIT.getTitle());
                         alarmIntent.putExtra("longText", notificationSHIT.getLongText());
 
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(v.getContext(), 1, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(v.getContext(), index, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                        //Log.d(TAG, "calendar.getTimeInMillis: " + calendar.getTimeInMillis());
+
+                        //Log.d(TAG, "calendar.getTimeInMillis + notiTimeTotal + id : " + (calendar.getTimeInMillis() + notiTimeTotal) + " " + notificationSHIT.getId());
 
                         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                         alarmManager.set(
@@ -263,10 +256,7 @@ public class FlyttActivity extends AppCompatActivity {
                                 pendingIntent
                         );
 
-                        // Log.d(TAG, "notificationShit calendar: " + calendar.getTimeInMillis() + " get time " + notiTimeTotal);
-
                     }
-
 
                     mHelpButton.setVisibility(View.INVISIBLE);
                     mDatePickerButton.setVisibility(View.INVISIBLE);
@@ -275,7 +265,6 @@ public class FlyttActivity extends AppCompatActivity {
                     resetHelpText.setVisibility(View.VISIBLE);
                     helpClicked = true;
 
-                    //activeDateShow.setVisibility(View.VISIBLE);
                     AlphaAnimation animation1 = new AlphaAnimation(0.0f, 1.0f);
                     animation1.setDuration(800);
                     animation1.setStartOffset(1);
@@ -317,13 +306,18 @@ public class FlyttActivity extends AppCompatActivity {
                     editor.putBoolean("Active", false);
                     editor.apply();
 
-                    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                    Intent myIntent = new Intent(getApplicationContext(),
-                            AlarmReceiver.class);
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                            getApplicationContext(), 1, myIntent, 0);
 
-                    alarmManager.cancel(pendingIntent);
+                    for(int i=1; i<=index; i++){
+                        Log.d(TAG, "onClick: deleted " + i);
+                        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                        Intent myIntent = new Intent(getApplicationContext(),
+                                AlarmReceiver.class);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                                getApplicationContext(), i, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                        alarmManager.cancel(pendingIntent);
+
+                    }
 
                 } else {
 
@@ -349,13 +343,13 @@ public class FlyttActivity extends AppCompatActivity {
                         moveBefore = i1;
 
                         i1 += 1;
-                        //Log.d(TAG, " - Flytten sker " + i + " " + i1 + " " + i2); // info att skriva ut till användaren
+
                         Calendar calle = Calendar.getInstance();
                         calle.set(i, moveBefore, i2); // tiden tills flytt
 
                         date = calle.getTime().getTime();
                         moveLong = (date - millis) / 1000;
-                        //Log.d(TAG, "onDateSet: MOVELONG: " + moveLong);
+
                         if (moveLong < 0) {
                             Toast.makeText(FlyttActivity.this, getString(R.string.guiden_toast_wrong_date), Toast.LENGTH_SHORT).show();
                             return;
@@ -371,11 +365,6 @@ public class FlyttActivity extends AppCompatActivity {
 
                         timeChosen = true;
 
-                        /*Log.d(TAG, "moveLong - oneWeekMS = BOKA EN VECKA INNAN FLYTT  = " + (notificationOneWeek)); // notificationOneWeek
-                        Log.d(TAG, "moveLong - twoWeekS = BOKA TVÅ VECKOR INNAN FLYTT  = " + (notificationTwoWeek)); // notificationTwoWeek
-                        Log.d(TAG, "moveLong - oneMonthS = BOKA EN MÅNAD INNAN FLYTT  = " + (notificationOneMonth)); // notificationOneMonth
-                        Log.d(TAG, "moveLong - twoMonthS = BOKA TVÅ MÅNADER INNAN FLYTT  = " + (notificationTwoMonth)); // notificationTwoMonth
-                        Log.d(TAG, "moveLong - threeMonthS = BOKA TRE MÅNADER INNAN FLYTT  = " + (notificationThreeMonth)); // notificationThreeMonth*/
                     }
                 }, y, m, d);
                 pickerDialog.show();
@@ -384,7 +373,7 @@ public class FlyttActivity extends AppCompatActivity {
         });
     }
 
-    public void createChannels() {
+    /*public void createChannels() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             if (notificationManager != null) {
@@ -411,7 +400,7 @@ public class FlyttActivity extends AppCompatActivity {
                 notificationManager.createNotificationChannel(notificationChannel2);
             }
         }
-    }
+    }*/
 
 
 }

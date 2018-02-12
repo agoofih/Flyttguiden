@@ -16,7 +16,7 @@ class NotificationHelper extends ContextWrapper {
 
     private NotificationManager mNotificationManager;
 
-    public static final String CHANNEL_ONE_ID   = "com.jessicathornsby.myapplication.ONE";
+    public static final String CHANNEL_ONE_ID = "com.jessicathornsby.myapplication.ONE";
     public static final String CHANNEL_ONE_NAME = "Channel One";
 
     public NotificationHelper(Context context) {
@@ -44,7 +44,7 @@ class NotificationHelper extends ContextWrapper {
     }
 
     private Notification.Builder getNotification(String title, String longText) {
-        Intent intent  = new Intent(this, NotificationReceiverActivity.class);
+        Intent intent = new Intent(this, NotificationReceiverActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
